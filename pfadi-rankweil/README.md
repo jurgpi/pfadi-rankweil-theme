@@ -79,7 +79,8 @@ sollte sie lokal einbinden (z. B. mit dem Plugin „OMGF“ oder als Dateien im 
 Das Theme meldet neue Versionen selbst unter *Dashboard → Aktualisierungen* – Update mit einem Klick.
 Quelle sind die GitHub-Releases (ZIP-Anhang), die `tools\build.ps1 … -Push` automatisch anlegt.
 
-Weil das Repository privat ist, braucht WordPress einen **Lese-Token**:
+Das Repository ist **öffentlich** – dafür ist **kein Token nötig**. Nur falls es wieder auf
+privat gestellt wird, braucht WordPress einen **Lese-Token**:
 1. GitHub → *Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token*
    - Name z. B. „Pfadi-Website Updates“, Ablaufdatum nach Wunsch (z. B. 1 Jahr)
    - *Repository access*: **Only select repositories** → `pfadi-rankweil-theme`
