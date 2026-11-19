@@ -98,7 +98,17 @@ function Publish-GitHubRelease {
     }
   }
   $uploadUri = "https://uploads.github.com/repos/$slug/releases/$($release.id)/assets?name=$assetName"
-  $asset = Invoke-RestMethod -Method Post -Uri $uploadUri -Headers $headers -InFile $ZipPath -ContentType 'application/zip'
+  # Direkt nach dem Anlegen kennt der Upload-Server das Release manchmal noch nicht -> wiederholen
+  $asset = $null
+  for ($try = 1; $try -le 5 -and -not $asset; $try++) {
+    try {
+      $asset = Invoke-RestMethod -Method Post -Uri $uploadUri -Headers $headers -InFile $ZipPath -ContentType 'application/zip'
+    } catch {
+      if ($try -eq 5) { throw }
+      Write-Host "Upload noch nicht moeglich (Versuch $try) - neuer Versuch in 3 Sekunden ..."
+      Start-Sleep -Seconds 3
+    }
+  }
   Write-Host ("ZIP angehaengt: {0} ({1} KB)" -f $asset.name, [math]::Round($asset.size / 1KB))
   Write-Host ("Release: " + $release.html_url)
 }
