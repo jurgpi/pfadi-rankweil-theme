@@ -1,24 +1,24 @@
 # Pfadi Rankweil – WordPress-Theme
 
-Modernes, schlankes Theme für www.pfadi-rankweil.at als Nachfolger von HitMag Pro.
+Modernes, schlankes Theme für www.pfadi-rankweil.at.
 
 ## Installation
 1. **Zuerst auf einer Testkopie / Staging ausprobieren** (z. B. mit dem Plugin „WP Staging“).
 2. `Design → Themes → Theme hinzufügen → Theme hochladen` → `pfadi-rankweil.zip`.
 3. Aktivieren und unter `Design → Anpassen` einrichten.
 
-## Nach dem Wechsel von HitMag Pro
+## Nach einem Theme-Wechsel
 - **Automatisch übernommen** (einmalig beim Aktivieren bzw. beim nächsten Admin-Aufruf):
-  Logo, Hauptmenü, Footer-Menü und Social-Media-Links aus HitMag Pro. Ein grüner Hinweis
-  im Admin zeigt, was übernommen wurde. Bereits gesetzte Werte werden nicht überschrieben.
+  Logo, Hauptmenü, Footer-Menü und Social-Media-Links aus dem vorherigen Theme. Ein grüner
+  Hinweis im Admin zeigt, was übernommen wurde. Bereits gesetzte Werte werden nicht überschrieben.
 - Falls etwas fehlt – **Logo**: `Anpassen → Website-Informationen → Logo`;
   **Menü**: `Design → Menüs → Positionen verwalten` → „Hauptmenü“.
-- **Widgets**: Die Bereiche heißen wie bei HitMag (Seitenleiste `sidebar-1`, Footer `footer-left`,
-  `footer-mid`, `footer-right`) – beim Wechsel landet jedes Widget am gleichen Platz.
-  Das HitMag-Widget „Sidebar Posts“ (z. B. „Neues aus der Gruppe“, „Wichtiges“) wird vom Theme
-  unterstützt („Beiträge mit Bild“). Nur das große Startseiten-Widget „HitMag Pro List Posts“
-  gibt es nicht – die Startseite baut das Theme selbst.
-- **Footer**: Kontaktdaten in „Footer links“, Logo in „Footer rechts“ (wie bei HitMag).
+- **Widgets**: Seitenleiste `sidebar-1`, Footer `footer-left`, `footer-mid`, `footer-right`.
+  Das Widget **„Beiträge mit Bild“** zeigt die neuesten Beiträge einer Kategorie mit
+  Vorschaubild (z. B. „Neues aus der Gruppe“, „Wichtiges“). Die Startseite baut das Theme selbst.
+- **Sicherer Wechsel**: Die Widget- und Menü-Anordnung wird beim Theme-Wechsel in beide
+  Richtungen gesichert und wiederhergestellt.
+- **Footer**: Kontaktdaten in „Footer links“, Logo in „Footer rechts“.
 - **PPÖ-Logo rechts unten**: `Anpassen → Pfadi Theme → Footer → Logo rechts unten` → aus der Mediathek
   das vorhandene weiße Logo „Logo-Rankweil-_WEISS“ wählen (das alte Bild-Widget im Footer dann entfernen).
 - **Startseite**: Funktioniert mit „Deine neuesten Beiträge“ und mit statischer Seite.

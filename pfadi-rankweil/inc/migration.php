@@ -298,7 +298,7 @@ add_action(
 			esc_html__( 'Pfadi Rankweil Theme:', 'pfadi-rankweil' ),
 			/* translators: %s: Liste */
 			esc_html( sprintf( __( 'Aus dem vorherigen Theme übernommen: %s.', 'pfadi-rankweil' ), implode( ', ', $done ) ) ),
-			esc_html__( 'Bitte unter Design → Widgets die Seitenleiste und den Footer prüfen – HitMag-eigene Widgets müssen ersetzt werden.', 'pfadi-rankweil' )
+			esc_html__( 'Bitte unter Design → Widgets die Seitenleiste und den Footer prüfen – Widgets des vorherigen Themes müssen evtl. ersetzt werden.', 'pfadi-rankweil' )
 		);
 	}
 );

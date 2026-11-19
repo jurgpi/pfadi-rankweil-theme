@@ -8,6 +8,13 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.11.1] – 2026-11-19
+### Geändert
+- Beschreibungen ohne Verweise auf andere Themes: README/GitHub-Startseite, Anleitung,
+  Widget-Name und -Beschreibung („Beiträge mit Bild“), Customizer-Beschriftungen und
+  Admin-Hinweis nach dem Theme-Wechsel. Funktion unverändert.
+- GitHub-Startseite um Mampfla-Archiv und Updates aus GitHub ergänzt.
+
 ## [1.11.0] – 2026-11-19
 ### Neu
 - Mampfla-Archiv aus Issuu: Shortcode `[mampfla_archiv]` mit aktueller Ausgabe als Viewer,

@@ -25,10 +25,10 @@ class Pfadi_Sidebar_Posts_Widget extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'sidebar_posts',
-			__( 'Beiträge mit Bild (Sidebar Posts)', 'pfadi-rankweil' ),
+			__( 'Beiträge mit Bild', 'pfadi-rankweil' ),
 			array(
 				'classname'                   => 'widget_sidebar_posts',
-				'description'                 => __( 'Neueste Beiträge einer Kategorie mit Vorschaubild – kompatibel zu HitMag „Sidebar Posts“.', 'pfadi-rankweil' ),
+				'description'                 => __( 'Neueste Beiträge einer Kategorie mit Vorschaubild.', 'pfadi-rankweil' ),
 				'customize_selective_refresh' => true,
 				'show_instance_in_rest'       => true,
 			)

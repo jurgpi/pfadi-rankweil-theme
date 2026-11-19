@@ -240,7 +240,7 @@ function pfadi_customize_register( $wp_customize ) {
 			),
 		)
 	);
-	$add( 'pfadi_classic_widgets', 'pfadi_layout', __( 'Klassische Widget-Verwaltung (wie bei HitMag)', 'pfadi-rankweil' ), 'checkbox', true );
+	$add( 'pfadi_classic_widgets', 'pfadi_layout', __( 'Klassische Widget-Verwaltung', 'pfadi-rankweil' ), 'checkbox', true );
 	$add( 'pfadi_excerpt_length', 'pfadi_layout', __( 'Auszugslänge (Wörter)', 'pfadi-rankweil' ), 'number', 22, array( 'input_attrs' => array( 'min' => 5, 'max' => 80 ) ) );
 	$add(
 		'pfadi_single_header',
@@ -250,7 +250,7 @@ function pfadi_customize_register( $wp_customize ) {
 		'classic',
 		array(
 			'choices' => array(
-				'classic' => __( 'Klassisch: Titel und Bild in der Textspalte (wie HitMag)', 'pfadi-rankweil' ),
+				'classic' => __( 'Klassisch: Titel und Bild in der Textspalte', 'pfadi-rankweil' ),
 				'hero'    => __( 'Groß: Bild über die ganze Breite, Titel darauf', 'pfadi-rankweil' ),
 			),
 		)
