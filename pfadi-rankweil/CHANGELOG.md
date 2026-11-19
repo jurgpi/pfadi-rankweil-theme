@@ -8,6 +8,14 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.10.1] – 2026-11-19
+### Geändert
+- Neues Theme-Vorschaubild (`screenshot.png`, 1200 × 900) mit dem offiziellen Gruppenlogo
+  „Pfadfinder*innen Österreich – Rankweil“ und den PPÖ-Stufenfarben.
+### Entfernt
+- Altes Vorschaubild `screenshot.jpg` mit Fotos von der Startseite – auch aus der gesamten
+  Git-Versionsgeschichte und dem ZIP von Release 1.10.0 entfernt.
+
 ## [1.10.0] – 2026-11-19
 ### Neu
 - Updates direkt aus GitHub: Das Theme meldet neue Versionen unter Dashboard → Aktualisierungen
