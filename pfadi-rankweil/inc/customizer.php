@@ -19,7 +19,7 @@ function pfadi_stufen_defaults() {
 			'short' => 'WiWö',
 			'age'   => '8–11 Jahre',
 			'text'  => 'Spielen, basteln, Abenteuer erleben – gemeinsam die Welt entdecken.',
-			'color' => '#F7B500',
+			'color' => '#FBBB21', // PPÖ WiWö
 			'url'   => '/stufen/wichtel/',
 			'cats'  => 'wichtel,woelflinge',
 		),
@@ -28,7 +28,7 @@ function pfadi_stufen_defaults() {
 			'short' => 'GuSp',
 			'age'   => '11–14 Jahre',
 			'text'  => 'Patrulle, Lagerfeuer, Hike: Verantwortung übernehmen und draußen sein.',
-			'color' => '#2E9E4A',
+			'color' => '#159A34', // PPÖ GuSp
 			'url'   => '/stufen/guides/',
 			'cats'  => 'guides,spaeher',
 		),
@@ -37,7 +37,7 @@ function pfadi_stufen_defaults() {
 			'short' => 'CaEx',
 			'age'   => '14–17 Jahre',
 			'text'  => 'Eigene Projekte planen, Grenzen testen und Unternehmungen wagen.',
-			'color' => '#1F7FD1',
+			'color' => '#0B4697', // PPÖ CaEx
 			'url'   => '/stufen/caravelles/',
 			'cats'  => 'caravelles,explorer',
 		),
@@ -46,7 +46,7 @@ function pfadi_stufen_defaults() {
 			'short' => 'RaRo',
 			'age'   => '17–20 Jahre',
 			'text'  => 'Gemeinschaft, Engagement und internationale Abenteuer.',
-			'color' => '#D3031C',
+			'color' => '#E62336', // PPÖ RaRo
 			'url'   => '/stufen/ranger/',
 			'cats'  => 'ranger,rover',
 		),

@@ -59,6 +59,7 @@
 	--shadow-lg: 0 0 0 1px rgba(255, 255, 255, .07), 0 24px 56px rgba(0, 0, 0, .6);
 }
 [data-theme="dark"] .stufe-1 .stufe__short { color: var(--stufe); }
+[data-theme="dark"] .stufe-3 .stufe__short { color: #6E9BE6; } /* PPÖ-CaEx-Blau ist auf Dunkel zu dunkel */
 [data-theme="dark"] .stufe__age { background: rgba(var(--stufe-rgb), .22); }
 [data-theme="dark"] .card__media img,
 [data-theme="dark"] .bento__media img,
@@ -387,7 +388,7 @@ a.stufe:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); color
 .stufe__short {
 	font: 900 2.6rem/1 var(--font-head); letter-spacing: -.04em; color: var(--stufe);
 }
-.stufe-1 .stufe__short { color: #C98F00; } /* bessere Lesbarkeit für Gelb */
+.stufe-1 .stufe__short { color: #A97A00; } /* PPÖ-Gelb #FBBB21 abgedunkelt – lesbar auf Weiß */
 .stufe__age {
 	align-self: flex-start; padding: .25em .7em; border-radius: 999px;
 	background: rgba(var(--stufe-rgb), .14); color: var(--c-heading); font-size: .8rem; font-weight: 700;
@@ -580,10 +581,13 @@ a.stufe:hover .stufe__more .icon { transform: translateX(4px); }
 .has-navy-color { color: #05368B !important; } .has-navy-background-color { background-color: #05368B !important; }
 .has-rot-color { color: #D3031C !important; } .has-rot-background-color { background-color: #D3031C !important; }
 .has-sand-background-color { background-color: #F5F1EA !important; }
-.has-wiwo-background-color { background-color: #F7B500 !important; }
-.has-gusp-background-color { background-color: #2E9E4A !important; }
-.has-caex-background-color { background-color: #1F7FD1 !important; }
-.has-raro-background-color { background-color: #D3031C !important; }
+.has-biber-background-color { background-color: #904837 !important; }
+.has-wiwo-background-color { background-color: #FBBB21 !important; }
+.has-gusp-background-color { background-color: #159A34 !important; }
+.has-caex-background-color { background-color: #0B4697 !important; }
+.has-raro-background-color { background-color: #E62336 !important; }
+.has-pwa-background-color { background-color: #E6007E !important; }
+.has-biber-color { color: #904837 !important; } .has-wiwo-color { color: #A97A00 !important; } .has-gusp-color { color: #159A34 !important; } .has-caex-color { color: #0B4697 !important; } .has-raro-color { color: #E62336 !important; } .has-pwa-color { color: #E6007E !important; }
 .has-dunkel-background-color { background-color: #0E1A2B !important; }
 .has-weiss-color { color: #fff !important; } .has-weiss-background-color { background-color: #fff !important; }
 
@@ -598,7 +602,7 @@ a.stufe:hover .stufe__more .icon { transform: translateX(4px); }
 	background: var(--tint); color: var(--c-link); transition: background .2s, color .2s, transform .2s;
 }
 .share a:hover, .share button:hover { background: var(--c-primary); color: #fff; transform: translateY(-2px); }
-.share button.is-copied { background: #2E9E4A; color: #fff; }
+.share button.is-copied { background: #159A34; color: #fff; }
 .share .icon { width: 18px; height: 18px; }
 
 .post-navigation .nav-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -691,8 +695,8 @@ a.stufe:hover .stufe__more .icon { transform: translateX(4px); }
 	margin: 1.5rem 0 0; padding: 1rem 1.25rem; border: 2px solid; border-radius: 12px; font-weight: 600;
 }
 .wpcf7 form:is(.init, .resetting, .submitting) .wpcf7-response-output { display: none; }
-.wpcf7 form.sent .wpcf7-response-output { border-color: #2E9E4A; background: rgba(46, 158, 74, .1); }
-.wpcf7 form:is(.invalid, .unaccepted, .payment-required) .wpcf7-response-output { border-color: #F7B500; background: rgba(247, 181, 0, .12); }
+.wpcf7 form.sent .wpcf7-response-output { border-color: #159A34; background: rgba(21, 154, 52, .1); }
+.wpcf7 form:is(.invalid, .unaccepted, .payment-required) .wpcf7-response-output { border-color: #FBBB21; background: rgba(251, 187, 33, .14); }
 .wpcf7 form:is(.failed, .aborted, .spam) .wpcf7-response-output { border-color: var(--c-accent); background: rgba(var(--c-accent-rgb), .08); }
 .g-recaptcha, .wpcf7-recaptcha { margin: .5rem 0 1rem; max-width: 100%; overflow: hidden; }
 
@@ -761,7 +765,7 @@ a.stufe:hover .stufe__more .icon { transform: translateX(4px); }
 	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='9' fill='none' stroke='black' stroke-width='2.2'/%3E%3Cpath d='M12 7v5l3 2' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
 	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='9' fill='none' stroke='black' stroke-width='2.2'/%3E%3Cpath d='M12 7v5l3 2' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
-.page-stufe-1 .simcal-calendar .simcal-event-start-time::before { background: #B98400; }
+.page-stufe-1 .simcal-calendar .simcal-event-start-time::before { background: #A97A00; }
 /* Ganztägig (nur Datum, keine Uhrzeit, kein Ort): leere Zeile durch „Ganztägig“ ersetzen */
 .simcal-calendar .simcal-events-list-container .simcal-event-details p:has(> .simcal-event-start-date):not(:has(.simcal-event-start-time, .simcal-event-end-date, .simcal-event-address > :not(meta))) {
 	font-size: 0;
@@ -794,6 +798,31 @@ a.stufe:hover .stufe__more .icon { transform: translateX(4px); }
 	.simcal-calendar .simcal-nav-button { width: 38px; height: 38px; }
 	.simcal-calendar .simcal-calendar-grid td.simcal-day { height: 3rem; }
 }
+
+/* ---------- Newsletter-Formular (Plugin Brevo / Sendinblue) ----------
+   Das Plugin setzt eigene Regeln mit ID-Selektor (form#sib_signup_form_1) → hier mit !important. */
+.sib_signup_form { padding: 0 !important; }
+.sib_signup_form p { margin: 0 0 .9rem; }
+.sib_signup_form label { font-weight: 600; color: var(--c-heading); font-size: .95rem; }
+.sib_signup_form :is(input[type=text], input[type=email], select) {
+	width: 100% !important; margin: .35rem 0 0 !important; padding: .75rem 1rem !important;
+	border: 2px solid var(--c-field-border) !important; border-radius: 12px !important;
+	background: var(--c-surface) !important; color: var(--c-text) !important; font: inherit !important;
+	box-shadow: none; transition: border-color .2s, box-shadow .2s;
+}
+.sib_signup_form :is(input[type=text], input[type=email], select):focus {
+	outline: none; border-color: var(--c-link) !important; box-shadow: 0 0 0 4px var(--tint) !important;
+}
+.sib_signup_form .sib-default-btn {
+	display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+	margin: .5rem 0 0 !important; padding: .85em 1.7em !important; border: 0 !important; border-radius: 999px !important;
+	background: var(--c-accent) !important; color: #fff !important;
+	font: 700 1rem/1 var(--font-head) !important; text-transform: none !important; letter-spacing: 0 !important;
+	box-shadow: 0 6px 18px rgba(var(--c-accent-rgb), .35); transition: transform .2s var(--ease), box-shadow .2s;
+}
+.sib_signup_form .sib-default-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(var(--c-accent-rgb), .45); }
+.sib_signup_form .sib-default-btn:focus-visible { outline: 3px solid var(--c-accent); outline-offset: 3px; }
+.sib_signup_form :is(.sib_msg_disp, .sib-alert-message) { border-radius: 12px; }
 
 /* ---------- Kontakt-Liste (Tabellen-Block mit CSS-Klasse „kontakt-liste“) ---------- */
 .entry-content .kontakt-liste { margin: 0 0 2rem; overflow: visible; }

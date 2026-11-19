@@ -8,6 +8,19 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.9.0] – 2026-11-19
+### Geändert
+- Offizielle PPÖ-Stufenfarben (laut ppoe.at → Design → Farbdefinitionen):
+  WiWö #FBBB21, GuSp #159A34, CaEx #0B4697, RaRo #E62336 – für Stufen-Kacheln,
+  Kategorie-Labels, Stufen-Archive, Kalender auf Stufen-Seiten. Gelb als Schrift abgedunkelt
+  (#A97A00), CaEx-Blau im Dark Mode aufgehellt – beides wegen Lesbarkeit.
+  Im Customizer bereits gespeicherte Stufenfarben bleiben unverändert.
+- Editor-Farbpalette um Biber (#904837) und PWA (#E6007E) ergänzt.
+- Logo-Farben der Gruppe (Navy, Rot) bleiben unverändert.
+### Neu
+- Newsletter-Formular (Plugin Brevo/Sendinblue) im Theme-Design: runder roter Button,
+  abgerundete Felder mit Fokus-Rahmen.
+
 ## [1.8.3] – 2026-11-19
 ### Neu
 - Design für Kontakt-Listen: Tabellen-Block mit der CSS-Klasse `kontakt-liste`
