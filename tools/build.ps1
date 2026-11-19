@@ -13,11 +13,21 @@
     damit WordPress beim Hochladen das bestehende Theme ersetzt).
   - Eine bereits gebaute Version wird nicht ueberschrieben (ausser mit -Force), damit nie
     zwei verschiedene Staende dieselbe Nummer tragen.
+
+  Git (optional):
+    ... build.ps1 -Release          # alle Aenderungen als "Version x.y.z" committen + Tag vx.y.z
+    ... build.ps1 -Release -Push    # zusaetzlich zu GitHub hochladen (Commit + Tag)
+  Typischer Ablauf fuer eine neue Version:
+    1. build.ps1 -Bump patch        (Version erhoehen, CHANGELOG-Abschnitt anlegen)
+    2. CHANGELOG.md ausfuellen, testen
+    3. build.ps1 -Force -Release -Push
 #>
 param(
   [ValidateSet('none', 'patch', 'minor', 'major')]
   [string]$Bump = 'none',
-  [switch]$Force
+  [switch]$Force,
+  [switch]$Release,
+  [switch]$Push
 )
 
 $ErrorActionPreference = 'Stop'
@@ -76,3 +86,33 @@ try {
   $zip.Dispose()
 }
 Write-Host ("Gebaut: dist\pfadi-rankweil-$version.zip (" + [math]::Round((Get-Item $zipPath).Length / 1KB) + ' KB)')
+
+if ($Release -or $Push) {
+  if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw 'Git ist nicht installiert.' }
+  $tag = "v$version"
+  $null = git -C $root rev-parse --git-dir 2>$null
+  if ($LASTEXITCODE -ne 0) { throw 'Der Ordner ist kein Git-Repository.' }
+
+  if ($Release) {
+    $existing = git -C $root tag --list $tag
+    if ($existing) { throw "Tag $tag gibt es schon. Version erhoehen (-Bump patch)." }
+    git -C $root add -A
+    $staged = git -C $root diff --cached --name-only
+    if ($staged) {
+      git -C $root commit -q -m "Version $version" -m "Siehe CHANGELOG.md."
+      if ($LASTEXITCODE -ne 0) { throw 'Commit fehlgeschlagen.' }
+      Write-Host "Commit: Version $version"
+    } else {
+      Write-Host 'Keine Aenderungen zu committen - Tag kommt auf den letzten Commit.'
+    }
+    git -C $root tag -a $tag -m "Version $version"
+    if ($LASTEXITCODE -ne 0) { throw 'Tag konnte nicht angelegt werden.' }
+    Write-Host "Tag: $tag"
+  }
+
+  if ($Push) {
+    git -C $root push origin HEAD --follow-tags
+    if ($LASTEXITCODE -ne 0) { throw 'Hochladen zu GitHub fehlgeschlagen.' }
+    Write-Host 'Zu GitHub hochgeladen.'
+  }
+}

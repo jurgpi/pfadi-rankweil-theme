@@ -75,5 +75,15 @@ sollte sie lokal einbinden (z. B. mit dem Plugin „OMGF“ oder als Dateien im 
 - Ergebnis: `dist\pfadi-rankweil-<version>.zip`. Im ZIP heißt der Ordner immer `pfadi-rankweil`,
   daher bietet WordPress beim Hochladen „Ersetzen“ an. Alte ZIPs in `dist\` aufheben = einfaches Zurückrollen.
 
+## Git & GitHub
+- Privates Repository: https://github.com/jurgpi/pfadi-rankweil-theme
+- Die Git-Datenbank liegt außerhalb von OneDrive (`C:\Users\juergen\git\pfadi-rankweil-theme.git`),
+  im Projektordner steht nur eine Verweis-Datei `.git`.
+- `dist\` (gebaute ZIPs) ist nicht im Repository – lässt sich jederzeit neu bauen.
+- Neue Version veröffentlichen:
+  1. `tools\build.ps1 -Bump patch` (bzw. `minor`/`major`)
+  2. `CHANGELOG.md` ausfüllen, testen
+  3. `tools\build.ps1 -Force -Release -Push` → Commit „Version x.y.z“, Tag `vx.y.z`, Upload zu GitHub
+
 ## Vorschau ohne WordPress
 Ordner `vorschau/` neben dem Theme: `node vorschau/server.js` → http://localhost:8765/
