@@ -8,6 +8,17 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.10.0] – 2026-11-19
+### Neu
+- Updates direkt aus GitHub: Das Theme meldet neue Versionen unter Dashboard → Aktualisierungen
+  (WordPress-Schnittstelle „Update URI“, kein zusätzliches Plugin). Quelle ist das ZIP im
+  neuesten GitHub-Release. Privates Repository: Lese-Token als `PFADI_GITHUB_TOKEN` in
+  `wp-config.php` (siehe README). Hinweis auf Themes-/Aktualisierungen-Seite bei Problemen.
+- Build-Skript: `-Push` legt zusätzlich das GitHub-Release mit dem ZIP und dem
+  Änderungsprotokoll-Abschnitt als Text an.
+### Geändert
+- Benötigt WordPress 6.1 oder neuer.
+
 ## [1.9.0] – 2026-11-19
 ### Geändert
 - Offizielle PPÖ-Stufenfarben (laut ppoe.at → Design → Farbdefinitionen):

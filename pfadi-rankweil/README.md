@@ -75,6 +75,27 @@ sollte sie lokal einbinden (z. B. mit dem Plugin „OMGF“ oder als Dateien im 
 - Ergebnis: `dist\pfadi-rankweil-<version>.zip`. Im ZIP heißt der Ordner immer `pfadi-rankweil`,
   daher bietet WordPress beim Hochladen „Ersetzen“ an. Alte ZIPs in `dist\` aufheben = einfaches Zurückrollen.
 
+## Updates direkt aus GitHub (ab 1.10.0)
+Das Theme meldet neue Versionen selbst unter *Dashboard → Aktualisierungen* – Update mit einem Klick.
+Quelle sind die GitHub-Releases (ZIP-Anhang), die `tools\build.ps1 … -Push` automatisch anlegt.
+
+Weil das Repository privat ist, braucht WordPress einen **Lese-Token**:
+1. GitHub → *Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token*
+   - Name z. B. „Pfadi-Website Updates“, Ablaufdatum nach Wunsch (z. B. 1 Jahr)
+   - *Repository access*: **Only select repositories** → `pfadi-rankweil-theme`
+   - *Permissions → Repository permissions*: **Contents: Read-only** (Metadata: Read-only wird automatisch gesetzt)
+2. In der Datei `wp-config.php` (beim Hoster per Dateimanager/FTP) **über** der Zeile
+   `/* That's all, stop editing! */` bzw. `/* Das war's, Schluss mit dem Bearbeiten! */` einfügen:
+   ```php
+   define( 'PFADI_GITHUB_TOKEN', 'github_pat_HIER_DEN_TOKEN_EINFUEGEN' );
+   ```
+3. *Dashboard → Aktualisierungen → „Erneut prüfen“*. Probleme zeigt WordPress als gelben Hinweis auf
+   der Themes- bzw. Aktualisierungen-Seite an.
+
+Sicherheit: Der Token steht nur in `wp-config.php` (nicht in der Datenbank, im Admin nicht sichtbar),
+wird nur an `api.github.com` gesendet und kann nur lesen. Auf GitHub unbedingt die
+Zwei-Faktor-Anmeldung aktivieren. Läuft der Token ab, einfach neuen erstellen und ersetzen.
+
 ## Git & GitHub
 - Privates Repository: https://github.com/jurgpi/pfadi-rankweil-theme
 - Die Git-Datenbank liegt außerhalb von OneDrive (`C:\Users\juergen\git\pfadi-rankweil-theme.git`),

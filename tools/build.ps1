@@ -30,6 +30,73 @@ param(
   [switch]$Push
 )
 
+<#
+  GitHub-Release mit dem ZIP als Anhang anlegen (oder aktualisieren).
+  Das Theme laedt Updates aus diesem Anhang (inc/updater.php).
+  Der GitHub-Zugang kommt aus der gespeicherten Git-Anmeldung (Git Credential Manager)
+  und wird nie ausgegeben.
+#>
+function Publish-GitHubRelease {
+  param([string]$Root, [string]$Version, [string]$Tag, [string]$ZipPath, [string]$ChangelogPath)
+
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+  $remote = (git -C $Root remote get-url origin).Trim()
+  $m = [regex]::Match($remote, 'github\.com[/:]([^/]+/[^/]+?)(\.git)?$')
+  if (-not $m.Success) { throw "Remote ist kein GitHub-Repository: $remote" }
+  $slug = $m.Groups[1].Value
+
+  # Token aus dem Git Credential Manager (ohne Rueckfrage)
+  $env:GCM_INTERACTIVE = 'never'; $env:GIT_TERMINAL_PROMPT = '0'
+  $cred = "protocol=https`nhost=github.com`n`n" | git credential fill 2>$null
+  $token = ($cred | Where-Object { $_ -like 'password=*' } | Select-Object -First 1)
+  if (-not $token) { throw 'Keine gespeicherte GitHub-Anmeldung gefunden (einmal git push im Terminal ausfuehren).' }
+  $token = $token.Substring(9)
+
+  $headers = @{
+    'Authorization'        = "Bearer $token"
+    'Accept'               = 'application/vnd.github+json'
+    'X-GitHub-Api-Version' = '2022-11-28'
+    'User-Agent'           = 'theme-build-script'
+  }
+
+  # Release-Text = Abschnitt dieser Version aus CHANGELOG.md
+  $notes = ''
+  if (Test-Path $ChangelogPath) {
+    $cl = [IO.File]::ReadAllText($ChangelogPath, (New-Object Text.UTF8Encoding $false))
+    $start = $cl.IndexOf("## [$Version]")
+    if ($start -ge 0) {
+      $next = $cl.IndexOf("`n## [", $start + 5)
+      $section = if ($next -gt 0) { $cl.Substring($start, $next - $start) } else { $cl.Substring($start) }
+      $notes = ($section -split "`n", 2)[1].Trim()
+    }
+  }
+
+  $api = "https://api.github.com/repos/$slug"
+  $release = $null
+  try { $release = Invoke-RestMethod -Method Get -Uri "$api/releases/tags/$Tag" -Headers $headers } catch { $release = $null }
+
+  if (-not $release) {
+    $payload = @{ tag_name = $Tag; name = "Version $Version"; body = $notes; draft = $false; prerelease = $false } | ConvertTo-Json
+    $bytes = [Text.Encoding]::UTF8.GetBytes($payload)
+    $release = Invoke-RestMethod -Method Post -Uri "$api/releases" -Headers $headers -Body $bytes -ContentType 'application/json; charset=utf-8'
+    Write-Host "GitHub-Release angelegt: Version $Version"
+  } else {
+    Write-Host "GitHub-Release $Tag gibt es schon - Anhang wird aktualisiert."
+  }
+
+  $assetName = Split-Path $ZipPath -Leaf
+  foreach ($a in @($release.assets)) {
+    if ($a -and $a.name -eq $assetName) {
+      Invoke-RestMethod -Method Delete -Uri "$api/releases/assets/$($a.id)" -Headers $headers | Out-Null
+    }
+  }
+  $uploadUri = "https://uploads.github.com/repos/$slug/releases/$($release.id)/assets?name=$assetName"
+  $asset = Invoke-RestMethod -Method Post -Uri $uploadUri -Headers $headers -InFile $ZipPath -ContentType 'application/zip'
+  Write-Host ("ZIP angehaengt: {0} ({1} KB)" -f $asset.name, [math]::Round($asset.size / 1KB))
+  Write-Host ("Release: " + $release.html_url)
+}
+
 $ErrorActionPreference = 'Stop'
 $root   = Split-Path -Parent $PSScriptRoot
 $theme  = Join-Path $root 'pfadi-rankweil'
@@ -114,5 +181,6 @@ if ($Release -or $Push) {
     git -C $root push origin HEAD --follow-tags
     if ($LASTEXITCODE -ne 0) { throw 'Hochladen zu GitHub fehlgeschlagen.' }
     Write-Host 'Zu GitHub hochgeladen.'
+    Publish-GitHubRelease -Root $root -Version $version -Tag $tag -ZipPath $zipPath -ChangelogPath $log
   }
 }
