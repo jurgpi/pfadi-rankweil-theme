@@ -16,7 +16,8 @@
 
   Git (optional):
     ... build.ps1 -Release          # alle Aenderungen als "Version x.y.z" committen + Tag vx.y.z
-    ... build.ps1 -Release -Push    # zusaetzlich zu GitHub hochladen (Commit + Tag)
+    ... build.ps1 -Release -Push    # zusaetzlich zu GitHub hochladen (Commit + Tag + Release mit ZIP)
+    ... build.ps1 -Force -GitHubRelease  # nur GitHub-Release fuer die aktuelle Version nachholen
   Typischer Ablauf fuer eine neue Version:
     1. build.ps1 -Bump patch        (Version erhoehen, CHANGELOG-Abschnitt anlegen)
     2. CHANGELOG.md ausfuellen, testen
@@ -27,7 +28,8 @@ param(
   [string]$Bump = 'none',
   [switch]$Force,
   [switch]$Release,
-  [switch]$Push
+  [switch]$Push,
+  [switch]$GitHubRelease
 )
 
 <#
@@ -46,10 +48,14 @@ function Publish-GitHubRelease {
   if (-not $m.Success) { throw "Remote ist kein GitHub-Repository: $remote" }
   $slug = $m.Groups[1].Value
 
-  # Token aus dem Git Credential Manager (ohne Rueckfrage)
+  # Token aus dem Git Credential Manager (ohne Rueckfrage). Die Anfrage geht ueber eine
+  # Datei an git, weil PowerShell 5.1 Pipe/stdin fuer git unbrauchbar veraendert.
+  # Die Datei enthaelt nur die Anfrage (Protokoll + Host), nie den Token.
   $env:GCM_INTERACTIVE = 'never'; $env:GIT_TERMINAL_PROMPT = '0'
-  $cred = "protocol=https`nhost=github.com`n`n" | git credential fill 2>$null
-  $token = ($cred | Where-Object { $_ -like 'password=*' } | Select-Object -First 1)
+  $req = Join-Path $env:TEMP ("credreq-" + [guid]::NewGuid().ToString('N') + '.txt')
+  [IO.File]::WriteAllBytes($req, [Text.Encoding]::ASCII.GetBytes("protocol=https`nhost=github.com`n`n"))
+  try { $credOut = cmd /c "git credential fill < `"$req`" 2>nul" } finally { Remove-Item $req -Force -ErrorAction SilentlyContinue }
+  $token = ($credOut | Where-Object { $_ -like 'password=*' } | Select-Object -First 1)
   if (-not $token) { throw 'Keine gespeicherte GitHub-Anmeldung gefunden (einmal git push im Terminal ausfuehren).' }
   $token = $token.Substring(9)
 
@@ -153,6 +159,11 @@ try {
   $zip.Dispose()
 }
 Write-Host ("Gebaut: dist\pfadi-rankweil-$version.zip (" + [math]::Round((Get-Item $zipPath).Length / 1KB) + ' KB)')
+
+if ($GitHubRelease -and -not $Push) {
+  # Nur das GitHub-Release fuer die aktuelle (bereits gepushte) Version anlegen/aktualisieren
+  Publish-GitHubRelease -Root $root -Version $version -Tag "v$version" -ZipPath $zipPath -ChangelogPath $log
+}
 
 if ($Release -or $Push) {
   if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw 'Git ist nicht installiert.' }
