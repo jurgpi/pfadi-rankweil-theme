@@ -8,6 +8,11 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.10.2] – 2026-11-19
+### Geändert
+- Theme-Vorschaubild zeigt jetzt das eigene Gruppenlogo der Pfadi Rankweil
+  (Lilie, „RANKWEIL“, Kirchturm) statt des PPÖ-Gruppenlogos.
+
 ## [1.10.1] – 2026-11-19
 ### Geändert
 - Neues Theme-Vorschaubild (`screenshot.png`, 1200 × 900) mit dem offiziellen Gruppenlogo
