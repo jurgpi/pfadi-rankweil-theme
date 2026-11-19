@@ -75,6 +75,15 @@ sollte sie lokal einbinden (z. B. mit dem Plugin „OMGF“ oder als Dateien im 
 - Ergebnis: `dist\pfadi-rankweil-<version>.zip`. Im ZIP heißt der Ordner immer `pfadi-rankweil`,
   daher bietet WordPress beim Hochladen „Ersetzen“ an. Alte ZIPs in `dist\` aufheben = einfaches Zurückrollen.
 
+## Mampfla-Archiv (Issuu)
+Auf einer Seite den Shortcode-Block einfügen: `[mampfla_archiv]`
+- Aktuelle Ausgabe als Viewer, die letzten 8 Ausgaben mit Titelbild, Archiv nach Jahrzehnten/Jahren.
+- Die Liste kommt automatisch von https://issuu.com/pfadi-rankweil (zweimal täglich aktualisiert).
+- Neue Ausgabe: einfach auf Issuu hochladen. Dateiname mit „mampfla“ und Datum, z. B.
+  `mampfla_202701_thema.pdf` → erscheint als „Jänner 2027 – Thema“.
+- Optionen: `neueste="12"`, `viewer="nein"`, `filter="griawig"` (z. B. für Lagerzeitungen),
+  `ausschluss="test,entwurf"`, `extra="kuerzel1,kuerzel2"`.
+
 ## Updates direkt aus GitHub (ab 1.10.0)
 Das Theme meldet neue Versionen selbst unter *Dashboard → Aktualisierungen* – Update mit einem Klick.
 Quelle sind die GitHub-Releases (ZIP-Anhang), die `tools\build.ps1 … -Push` automatisch anlegt.

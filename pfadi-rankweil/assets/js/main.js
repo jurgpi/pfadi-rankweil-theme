@@ -70,6 +70,40 @@
 		});
 	});
 
+	// Mampfla-Archiv: Klick auf eine Ausgabe öffnet sie im Viewer auf der Seite
+	document.querySelectorAll('.issuu-archiv').forEach(function (box) {
+		var frame = box.querySelector('.issuu-viewer iframe');
+		var label = box.querySelector('.issuu-viewer__label');
+		var kicker = box.querySelector('.issuu-viewer__kicker');
+		var open = box.querySelector('.issuu-viewer__open');
+		var user = box.getAttribute('data-user');
+		if (!frame || !user) { return; }
+		var show = function (doc, text, scroll) {
+			if (!/^[A-Za-z0-9_\-]+$/.test(doc)) { return; }
+			frame.src = 'https://e.issuu.com/embed.html?u=' + encodeURIComponent(user) + '&d=' + encodeURIComponent(doc);
+			if (label && text) { label.textContent = text; }
+			if (kicker) { kicker.textContent = 'Ausgabe'; }
+			if (open) { open.href = 'https://issuu.com/' + user + '/docs/' + doc; }
+			box.querySelectorAll('[data-issuu-doc]').forEach(function (a) {
+				a.classList.toggle('is-active', a.getAttribute('data-issuu-doc') === doc);
+			});
+			if (scroll) { box.querySelector('.issuu-viewer').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+		};
+		box.addEventListener('click', function (e) {
+			var a = e.target.closest && e.target.closest('[data-issuu-doc]');
+			if (!a || e.ctrlKey || e.metaKey || e.shiftKey) { return; }
+			e.preventDefault();
+			var doc = a.getAttribute('data-issuu-doc');
+			show(doc, a.getAttribute('data-issuu-label'), true);
+			try { history.replaceState(null, '', '#ausgabe=' + doc); } catch (err) {}
+		});
+		var m = location.hash.match(/^#ausgabe=([A-Za-z0-9_\-]+)$/);
+		if (m) {
+			var link = box.querySelector('[data-issuu-doc="' + m[1] + '"]');
+			show(m[1], link ? link.getAttribute('data-issuu-label') : '', true);
+		}
+	});
+
 	// Link kopieren
 	document.querySelectorAll('.share-copy').forEach(function (btn) {
 		btn.addEventListener('click', function () {

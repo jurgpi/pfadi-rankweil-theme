@@ -824,6 +824,69 @@ a.stufe:hover .stufe__more .icon { transform: translateX(4px); }
 .sib_signup_form .sib-default-btn:focus-visible { outline: 3px solid var(--c-accent); outline-offset: 3px; }
 .sib_signup_form :is(.sib_msg_disp, .sib-alert-message) { border-radius: 12px; }
 
+/* ---------- Mampfla-Archiv (Shortcode [mampfla_archiv]) ---------- */
+.issuu-archiv { margin: 2rem 0; }
+.issuu-viewer {
+	background: var(--c-surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(1rem, 3vw, 1.75rem);
+	scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+.issuu-viewer__title { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; font-size: clamp(1.3rem, 2.6vw, 1.7rem); margin: 0 0 1rem; }
+.issuu-viewer__kicker {
+	font: 800 .75rem/1 var(--font); letter-spacing: .1em; text-transform: uppercase; color: #fff;
+	background: var(--c-accent); padding: .45em .8em; border-radius: 999px;
+}
+.issuu-viewer__frame { position: relative; aspect-ratio: 16 / 10; min-height: 420px; border-radius: var(--radius-sm); overflow: hidden; background: var(--tint); }
+.issuu-viewer__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.issuu-viewer__links { margin: .75rem 0 0; text-align: right; font-size: .9rem; }
+.issuu-viewer__links a { font-weight: 600; text-decoration: none; }
+
+.issuu-section-title { display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; font-size: clamp(1.4rem, 3vw, 1.9rem); margin: 2.5rem 0 1rem; }
+.issuu-count { font: 600 .9rem var(--font); color: var(--c-muted); letter-spacing: 0; }
+
+.issuu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: clamp(.75rem, 2vw, 1.25rem); }
+.entry-content .issuu-grid { margin-bottom: 0; }
+.issuu-card {
+	display: flex; flex-direction: column; text-decoration: none; color: var(--c-heading);
+	background: var(--c-surface); border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm);
+	transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.issuu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); color: var(--c-heading); }
+.issuu-card.is-active { outline: 3px solid var(--c-accent); outline-offset: 2px; }
+.issuu-card__cover { display: block; aspect-ratio: 210 / 297; background: var(--tint); overflow: hidden; }
+.entry-content .issuu-card__cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; transition: transform .5s var(--ease); }
+.issuu-card:hover .issuu-card__cover img { transform: scale(1.04); }
+.issuu-card__placeholder { display: grid; place-items: center; height: 100%; font: 800 1.1rem var(--font-head); color: var(--c-link); }
+.issuu-card__body { display: flex; flex-direction: column; gap: .15rem; padding: .7rem .85rem .85rem; }
+.issuu-card__label { font: 800 .95rem/1.25 var(--font-head); }
+.issuu-card__topic { font-size: .82rem; color: var(--c-muted); line-height: 1.3; }
+
+.issuu-decades { display: grid; gap: .75rem; }
+.issuu-decade { background: var(--c-surface); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); overflow: hidden; }
+.issuu-decade > summary {
+	cursor: pointer; list-style: none; padding: .95rem 1.25rem; font: 800 1.1rem var(--font-head); color: var(--c-heading);
+	display: flex; align-items: center; justify-content: space-between;
+}
+.issuu-decade > summary::-webkit-details-marker { display: none; }
+.issuu-decade > summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--c-accent-text); transition: transform .2s; }
+.issuu-decade[open] > summary::after { content: "–"; }
+.issuu-decade > summary:hover { background: var(--tint-soft); }
+.entry-content .issuu-years { list-style: none; margin: 0; padding: 0 1.25rem 1rem; }
+.issuu-year { display: grid; grid-template-columns: 4.5rem 1fr; gap: .75rem; align-items: start; padding: .55rem 0; border-top: 1px solid var(--c-line); }
+.issuu-year::marker { content: none; }
+.issuu-year__num { font: 800 1rem/2 var(--font-head); color: var(--c-heading); }
+.issuu-year__issues { display: flex; flex-wrap: wrap; gap: .4rem; }
+.issuu-chip {
+	display: inline-block; padding: .35em .85em; border-radius: 999px; font-size: .88rem; font-weight: 600; text-decoration: none;
+	background: var(--tint); color: var(--c-link); transition: background .2s, color .2s;
+}
+.issuu-chip:hover, .issuu-chip.is-active { background: var(--c-primary); color: #fff; }
+[data-theme="dark"] .issuu-chip:hover, [data-theme="dark"] .issuu-chip.is-active { background: var(--c-link); color: #0B1220; }
+.issuu-source, .issuu-empty { margin-top: 1.25rem; font-size: .9rem; color: var(--c-muted); }
+@media (max-width: 640px) {
+	.issuu-viewer__frame { aspect-ratio: 3 / 4; min-height: 0; }
+	.issuu-year { grid-template-columns: 3.5rem 1fr; }
+}
+
 /* ---------- Kontakt-Liste (Tabellen-Block mit CSS-Klasse „kontakt-liste“) ---------- */
 .entry-content .kontakt-liste { margin: 0 0 2rem; overflow: visible; }
 .entry-content .kontakt-liste table {

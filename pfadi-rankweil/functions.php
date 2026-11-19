@@ -20,6 +20,7 @@ require PFADI_DIR . '/inc/template-tags.php';
 require PFADI_DIR . '/inc/migration.php';
 require PFADI_DIR . '/inc/compat-hitmag.php';
 require PFADI_DIR . '/inc/updater.php';
+require PFADI_DIR . '/inc/issuu.php';
 
 /**
  * Theme-Grundeinstellungen.

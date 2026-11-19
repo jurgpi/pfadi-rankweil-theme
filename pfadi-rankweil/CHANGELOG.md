@@ -8,6 +8,15 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.11.0] – 2026-11-19
+### Neu
+- Mampfla-Archiv aus Issuu: Shortcode `[mampfla_archiv]` mit aktueller Ausgabe als Viewer,
+  den letzten 8 Ausgaben mit Titelbild und dem Archiv seit 1983 nach Jahrzehnten/Jahren.
+  Ein Klick öffnet die Ausgabe im Viewer auf der eigenen Seite (Link teilbar per `#ausgabe=…`).
+- Die Ausgabenliste kommt automatisch von der Issuu-Profilseite (zweimal täglich im Hintergrund,
+  letzte Liste bleibt bei Fehlern erhalten). Datum und Thema werden aus dem Dateinamen erkannt,
+  doppelt hochgeladene Ausgaben zusammengefasst. Kein Issuu-API-Schlüssel nötig.
+
 ## [1.10.2] – 2026-11-19
 ### Geändert
 - Theme-Vorschaubild zeigt jetzt das eigene Gruppenlogo der Pfadi Rankweil
