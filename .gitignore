@@ -1,0 +1,12 @@
+# Gebaute Theme-ZIPs – lassen sich jederzeit mit tools\build.ps1 neu erzeugen
+dist/
+
+# Lokale Einstellungen von Claude Code (launch.json für die Vorschau bleibt drin)
+.claude/settings.local.json
+
+# System-/Editor-Dateien
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+~$*

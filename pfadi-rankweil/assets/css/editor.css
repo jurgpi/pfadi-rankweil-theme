@@ -1,0 +1,15 @@
+/* Block-Editor: gleiche Typografie wie im Frontend */
+body {
+	font: 400 1.1rem/1.75 "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+	color: #1B2433;
+}
+h1, h2, h3, h4, h5, h6, .editor-post-title__input {
+	font-family: ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+	font-weight: 800;
+	letter-spacing: -.02em;
+	color: #0E1A2B;
+}
+a { color: #05368B; }
+blockquote, .wp-block-quote { border-left: 5px solid #D3031C; padding-left: 1.25rem; font-weight: 600; }
+.wp-block-button__link { border-radius: 999px; background: #D3031C; font-weight: 700; }
+img { border-radius: 12px; }
