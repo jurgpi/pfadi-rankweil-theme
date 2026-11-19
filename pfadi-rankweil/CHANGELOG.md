@@ -8,6 +8,12 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.11.2] – 2026-11-19
+### Behoben
+- Update-Prüfung: „Erneut überprüfen“ unter Dashboard → Aktualisierungen holt den neuesten
+  GitHub-Release jetzt sofort. Bisher konnte ein neues Release bis zu einer Stunde lang
+  unsichtbar bleiben, weil die gespeicherte Antwort von GitHub nicht verworfen wurde.
+
 ## [1.11.1] – 2026-11-19
 ### Geändert
 - Beschreibungen ohne Verweise auf andere Themes: README/GitHub-Startseite, Anleitung,
