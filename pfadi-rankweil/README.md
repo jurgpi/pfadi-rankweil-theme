@@ -43,7 +43,7 @@ Hochladen unter `Anpassen → Pfadi Theme → Kopfbereich → Pfadi-Symbol` (plu
 | Bereich | Optionen |
 |---|---|
 | Farben & Layout | Haupt-/Akzent-/Hintergrundfarbe, Eckenrundung, Seitenleiste links/rechts/keine, Kacheln/Liste, Auszugslänge, Lesezeit, ähnliche Beiträge, Teilen-Buttons |
-| Kopfbereich | Fixierter Header, Infoleiste + Text, Button „Mitmachen“ (Text/Link), Suche |
+| Kopfbereich | Fixierter Header, Infoleiste + Text, Button „Anmelden“ (Text/Link), Suche |
 | Startseite: Aufmacher | Kachel-Raster (5 neueste Beiträge, optional Kategorie) **oder** Willkommens-Banner mit Bild & 2 Buttons |
 | Startseite: Stufen | 4 Kacheln (Name, Kürzel, Alter, Text, Farbe, Bild, Link) – Standard: PPÖ-Stufenfarben |
 | Startseite: Berichte | Überschrift, Kategorie, Anzahl, Doppelte ausblenden |

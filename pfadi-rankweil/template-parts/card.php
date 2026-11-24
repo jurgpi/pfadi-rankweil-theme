@@ -7,7 +7,7 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'card' ); ?>>
 	<a class="card__media" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
-		<?php pfadi_thumbnail( 'pfadi-card' ); ?>
+		<?php pfadi_thumbnail( 'pfadi-card', '(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) 50vw, 400px' ); ?>
 	</a>
 	<div class="card__body">
 		<?php pfadi_category_pill(); ?>

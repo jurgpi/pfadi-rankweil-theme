@@ -80,7 +80,7 @@
 					</button>
 				<?php endif; ?>
 				<?php
-				$cta_text = pfadi_mod( 'pfadi_header_cta_text', 'Mitmachen' );
+				$cta_text = pfadi_mod( 'pfadi_header_cta_text', 'Anmelden' );
 				$cta_url  = pfadi_url( pfadi_mod( 'pfadi_header_cta_url', '/anmeldung/' ) );
 				if ( $cta_text && $cta_url ) :
 					?>

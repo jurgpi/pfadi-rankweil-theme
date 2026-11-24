@@ -27,6 +27,8 @@ if ( ! $q->have_posts() ) {
 ?>
 <section class="hero-bento">
 	<div class="container">
+		<?php // Überschrift der Startseite für Screenreader und Suchmaschinen – sichtbar steht der Name schon im Logo. ?>
+		<h1 class="screen-reader-text"><?php bloginfo( 'name' ); ?></h1>
 		<div class="bento">
 			<?php
 			$i = 0;
@@ -37,7 +39,15 @@ if ( ! $q->have_posts() ) {
 				?>
 				<article class="bento__item bento__item--<?php echo (int) $i; ?>">
 					<a class="bento__link" href="<?php the_permalink(); ?>">
-						<span class="bento__media"><?php pfadi_thumbnail( 1 === $i ? 'pfadi-hero' : 'pfadi-card' ); ?></span>
+						<span class="bento__media">
+							<?php
+							if ( 1 === $i ) {
+								pfadi_thumbnail( 'pfadi-hero', '(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 64px), 620px', true );
+							} else {
+								pfadi_thumbnail( 'pfadi-card', '(max-width: 1024px) 50vw, 300px' );
+							}
+							?>
+						</span>
 						<span class="bento__body">
 							<?php pfadi_category_pill( false, 1 === $i ? 3 : 1 ); ?>
 							<?php if ( 1 === $i ) : ?>

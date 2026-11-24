@@ -212,9 +212,26 @@ function pfadi_excluded_cat_ids() {
 /**
  * Beitragsbild oder Platzhalter mit Lilie.
  */
-function pfadi_thumbnail( $size = 'pfadi-card' ) {
+function pfadi_thumbnail( $size = 'pfadi-card', $sizes = '', $priority = false ) {
 	if ( has_post_thumbnail() ) {
-		the_post_thumbnail( $size, array( 'loading' => 'lazy', 'alt' => the_title_attribute( array( 'echo' => false ) ) ) );
+		$attr = array(
+			// Steht immer neben dem Titel – leerer Alt-Text, sonst wird der Titel doppelt vorgelesen.
+			'alt'      => '',
+			'decoding' => 'async',
+		);
+		// Das größte Bild im sichtbaren Bereich (z. B. die große Bento-Kachel) sofort und
+		// bevorzugt laden – alles andere erst, wenn es in die Nähe des Bildschirms kommt.
+		if ( $priority ) {
+			$attr['loading']       = 'eager';
+			$attr['fetchpriority'] = 'high';
+		} else {
+			$attr['loading'] = 'lazy';
+		}
+		// Tatsächliche Anzeigebreite, damit der Browser aus srcset die passende Größe wählt.
+		if ( $sizes ) {
+			$attr['sizes'] = $sizes;
+		}
+		the_post_thumbnail( $size, $attr );
 	} else {
 		echo '<span class="thumb-fallback">' . pfadi_symbol( 'light' ) . '</span>'; // phpcs:ignore
 	}

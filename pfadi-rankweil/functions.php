@@ -217,6 +217,38 @@ function pfadi_dark_mode_head() {
 add_action( 'wp_head', 'pfadi_dark_mode_head', 1 );
 
 /**
+ * Überschrift-Schrift früh anfordern, damit die H1 nicht erst in der Ersatzschrift erscheint.
+ */
+function pfadi_preload_font() {
+	printf(
+		'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
+		esc_url( PFADI_URI . '/assets/fonts/nunito-latin.woff2' )
+	);
+}
+add_action( 'wp_head', 'pfadi_preload_font', 2 );
+
+/**
+ * WordPress-Emoji-Skript abschalten: Alle aktuellen Systeme zeigen Emojis selbst an.
+ * Spart ein Skript und pro Emoji eine Bild-Anfrage an s.w.org.
+ * Wieder einschalten mit: add_filter( 'pfadi_disable_emoji', '__return_false' );
+ */
+add_action(
+	'init',
+	function () {
+		if ( ! apply_filters( 'pfadi_disable_emoji', true ) ) {
+			return;
+		}
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'wp_enqueue_scripts', 'wp_enqueue_emoji_styles' );
+		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+		add_filter( 'emoji_svg_url', '__return_false' );
+	}
+);
+
+/**
  * Klassische Widget-Verwaltung wie bei HitMag (abschaltbar im Customizer).
  */
 add_filter(

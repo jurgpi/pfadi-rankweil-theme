@@ -19,7 +19,7 @@ $GLOBALS['pfadi_shown'] = array();
  * Widgets der Seitenleiste (z. B. „Neues aus der Gruppe“, „Wichtiges“, Newsletter) als Karten
  * auf der Startseite – wie früher im Startseiten-Bereich von HitMag.
  */
-$pfadi_side_pos = pfadi_mod( 'pfadi_front_sidebar', 'after_stufen' );
+$pfadi_side_pos = pfadi_mod( 'pfadi_front_sidebar', 'after_news' );
 $pfadi_side     = function ( $where ) use ( $pfadi_side_pos ) {
 	if ( $where !== $pfadi_side_pos || ! is_active_sidebar( 'sidebar-1' ) ) {
 		return;

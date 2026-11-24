@@ -8,6 +8,30 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.13.0] – 2026-11-24
+### Geändert
+- Startseite: Die Widgets der Seitenleiste („Neues aus der Gruppe“, „Wichtiges“, Newsletter)
+  stehen standardmäßig unter den Berichten statt zwischen Stufen und Berichten. Wer die Position
+  im Customizer schon bewusst gewählt hat, behält sie.
+- Startseite: „Alle Berichte“ steht jetzt unter den Karten statt rechts oben.
+- Startseite hat eine Überschrift (H1) mit dem Namen der Gruppe – nur für Screenreader und
+  Suchmaschinen, sichtbar bleibt das Logo.
+- Button im Menü heißt standardmäßig „Anmelden“ statt „Mitmachen“.
+- Rote Buttons mit neutralem Schatten statt rotem Leuchten; markierter Text und Formular-
+  Kästchen in den Markenfarben.
+
+### Schneller
+- Das große Bild im Kachel-Raster lädt sofort und mit Vorrang (vorher verzögert).
+- Kachel- und Kartenbilder sagen dem Browser ihre echte Anzeigebreite, dadurch werden kleinere
+  Bilddateien geladen.
+- Die Überschrift-Schrift wird früh vorgeladen.
+- Das WordPress-Emoji-Skript ist abgeschaltet (Emojis zeigt das System selbst an). Wieder
+  einschalten: `add_filter( 'pfadi_disable_emoji', '__return_false' );`
+
+### Behoben
+- Bei 1024–1200px Breite ragte die Kopfzeile über den Rand (Menü jetzt enger).
+- Bilder in Kacheln und Karten haben leeren Alt-Text, damit der Titel nicht doppelt vorgelesen wird.
+
 ## [1.12.0] – 2026-11-24
 ### Geändert
 - Typografie: Die Überschriften-Schrift Nunito wird jetzt mit dem Theme ausgeliefert

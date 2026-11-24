@@ -33,13 +33,8 @@ $more_text  = pfadi_mod( 'pfadi_news_more_text', 'Alle Berichte' );
 ?>
 <section class="section news">
 	<div class="container">
-		<header class="section-head section-head--row">
-			<div>
-				<h2 class="section-title"><?php echo esc_html( $title ); ?></h2>
-			</div>
-			<?php if ( $more_text ) : ?>
-				<a class="btn btn--outline" href="<?php echo esc_url( $more_url ); ?>"><?php echo esc_html( $more_text ); ?> <?php echo pfadi_icon( 'arrow' ); // phpcs:ignore ?></a>
-			<?php endif; ?>
+		<header class="section-head">
+			<h2 class="section-title"><?php echo esc_html( $title ); ?></h2>
 		</header>
 		<div class="card-grid">
 			<?php
@@ -50,5 +45,10 @@ $more_text  = pfadi_mod( 'pfadi_news_more_text', 'Alle Berichte' );
 			wp_reset_postdata();
 			?>
 		</div>
+		<?php if ( $more_text ) : ?>
+			<p class="news__more">
+				<a class="btn btn--outline" href="<?php echo esc_url( $more_url ); ?>"><?php echo esc_html( $more_text ); ?> <?php echo pfadi_icon( 'arrow' ); // phpcs:ignore ?></a>
+			</p>
+		<?php endif; ?>
 	</div>
 </section>

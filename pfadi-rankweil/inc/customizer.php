@@ -268,7 +268,7 @@ function pfadi_customize_register( $wp_customize ) {
 	$add( 'pfadi_sticky_header', 'pfadi_header', __( 'Kopfzeile beim Scrollen fixieren', 'pfadi-rankweil' ), 'checkbox', true );
 	$add( 'pfadi_topbar', 'pfadi_header', __( 'Obere Infoleiste anzeigen', 'pfadi-rankweil' ), 'checkbox', true );
 	$add( 'pfadi_topbar_text', 'pfadi_header', __( 'Text in der Infoleiste', 'pfadi-rankweil' ), 'text', 'Allzeit bereit! – Pfadfinder*innen in Rankweil' );
-	$add( 'pfadi_header_cta_text', 'pfadi_header', __( 'Button-Text im Menü', 'pfadi-rankweil' ), 'text', 'Mitmachen' );
+	$add( 'pfadi_header_cta_text', 'pfadi_header', __( 'Button-Text im Menü', 'pfadi-rankweil' ), 'text', 'Anmelden' );
 	$add( 'pfadi_header_cta_url', 'pfadi_header', __( 'Button-Link', 'pfadi-rankweil' ), 'url', '/anmeldung/' );
 	$add( 'pfadi_header_search', 'pfadi_header', __( 'Suche im Menü anzeigen', 'pfadi-rankweil' ), 'checkbox', true );
 
@@ -328,12 +328,12 @@ function pfadi_customize_register( $wp_customize ) {
 		'pfadi_news',
 		__( 'Widgets der Seitenleiste auf der Startseite (z. B. „Neues aus der Gruppe“, „Wichtiges“)', 'pfadi-rankweil' ),
 		'select',
-		'after_stufen',
+		'after_news',
 		array(
 			'choices' => array(
 				'after_hero'   => __( 'Unter dem Aufmacher', 'pfadi-rankweil' ),
-				'after_stufen' => __( 'Unter den Stufen (Standard)', 'pfadi-rankweil' ),
-				'after_news'   => __( 'Unter den Berichten', 'pfadi-rankweil' ),
+				'after_stufen' => __( 'Unter den Stufen', 'pfadi-rankweil' ),
+				'after_news'   => __( 'Unter den Berichten (Standard)', 'pfadi-rankweil' ),
 				'off'          => __( 'Nicht anzeigen', 'pfadi-rankweil' ),
 			),
 		)
