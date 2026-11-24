@@ -35,7 +35,6 @@ $more_text  = pfadi_mod( 'pfadi_news_more_text', 'Alle Berichte' );
 	<div class="container">
 		<header class="section-head section-head--row">
 			<div>
-				<span class="eyebrow"><?php esc_html_e( 'Aus der Gruppe', 'pfadi-rankweil' ); ?></span>
 				<h2 class="section-title"><?php echo esc_html( $title ); ?></h2>
 			</div>
 			<?php if ( $more_text ) : ?>

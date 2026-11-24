@@ -11,7 +11,6 @@ $intro = pfadi_mod( 'pfadi_stufen_intro', 'Vier Altersstufen, ein gemeinsames Zi
 <section class="section stufen" id="stufen">
 	<div class="container">
 		<header class="section-head">
-			<span class="eyebrow"><?php esc_html_e( 'Unsere Stufen', 'pfadi-rankweil' ); ?></span>
 			<?php if ( $title ) : ?>
 				<h2 class="section-title"><?php echo esc_html( $title ); ?></h2>
 			<?php endif; ?>

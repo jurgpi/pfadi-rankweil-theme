@@ -8,6 +8,21 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools/build.ps1 -Bump patch|minor|major` (siehe README).
 
+## [1.12.0] – 2026-11-24
+### Geändert
+- Typografie: Die Überschriften-Schrift Nunito wird jetzt mit dem Theme ausgeliefert
+  (`assets/fonts/`, selbst gehostet, keine externen Anfragen). Bisher war die runde Schrift
+  nur auf Apple-Geräten sichtbar, Windows zeigte Segoe UI. Gilt auch im Block-Editor.
+- Deutlichere Größenabstufung: größere Abschnittsüberschriften, Karten-, Stufen- und
+  Widget-Titel 1,35rem.
+- Die kleinen Labels „Unsere Stufen“ und „Aus der Gruppe“ über den Abschnittsüberschriften
+  entfallen.
+- Überschriften brechen ausgeglichen um, Fließtext ohne einzelnes Wort in der letzten Zeile.
+
+### Behoben
+- Pills mindestens 12px groß (in kleinen Bento-Kacheln waren es 10,4px).
+- Stufen-Pills mit weißer Schrift erreichen jetzt 4.5:1 Kontrast (z. B. auf dem GuSp-Grün).
+
 ## [1.11.2] – 2026-11-19
 ### Behoben
 - Update-Prüfung: „Erneut überprüfen“ unter Dashboard → Aktualisierungen holt den neuesten
